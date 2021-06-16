@@ -1,1 +1,32 @@
-<p>login works!</p>
+<h3 style="text-align: center">Login</h3>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <mat-form-field>
+      <input matInput formControlName="email" placeholder="Email" />
+      <mat-hint *ngIf="loginForm.controls.email.errors">
+        Email is required
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="password"
+        placeholder="Password"
+        type="password"
+      />
+      <mat-hint *ngIf="loginForm.controls.password.errors">
+        Password is required
+      </mat-hint>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      type="submit"
+      color="primary"
+      [disabled]="!loginForm.valid"
+    >
+      Log In
+    </button>
+  </div>
+</form>
